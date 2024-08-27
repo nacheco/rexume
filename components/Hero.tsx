@@ -27,6 +27,11 @@ const Hero: React.FC = () => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.8, duration: 0.5 }}
         className="text-[13px] md:text-lg mt-4 sm:mt-6 font-light text-center tracking-tight px-4 sm:px-0"
+        style={{
+          background: 'radial-gradient(circle, #1F2125 62%, #999999 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent'
+        }}
       >
         Craft Your Perfect Resume with AI-Assisted Tools: Customize, Optimize, and
         <br />
@@ -74,7 +79,7 @@ const Hero: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.5 }}
-        className="text-charcoal-black text-base sm:text-lg mt-6"
+        className="text-base sm:text-lg mt-6 bg-clip-text text-transparent bg-gradient-to-r from-dark via-primary to-secondary"
       >
         Harnessing AI-powered resume analysis to transform your professional experience into
         a compelling narrative, boosting your chances of landing your dream job.
