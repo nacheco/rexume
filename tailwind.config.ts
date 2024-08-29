@@ -19,6 +19,7 @@ const config = {
     },
     extend: {
       colors: {
+        "main": "#FFF7ED",
         'primary': '#FE0196',
         'secondary': '#FB8C3E',
         'dark': '#1F2125',
@@ -44,6 +45,10 @@ const config = {
       },
       backgroundColor: {
         'dark': '#1F2125',
+      },
+      fontFamily: {
+        poppins: ["var(--font-poppins)"],
+        gilda: ["var(--font-gilda-display)"],
       },
     },
   },

@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { FaAsterisk } from "react-icons/fa";
 
 const Hero: React.FC = () => {
   return (
@@ -11,16 +12,16 @@ const Hero: React.FC = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
-        className="text-[28px] sm:text-[28px] md:text-[42px] lg:text-[48px] xl:text-[62px] font-extrabold leading-[1.1] mb-4 text-center tracking-tighter"
+        className="font-gilda text-[32px] sm:text-[56px] md:text-[56px] lg:text-[68px] xl:text-[82px] leading-[1.1] mb-4 text-center tracking-tighter"
         style={{
           background: 'radial-gradient(circle, #1F2125 62%, #999999 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent'
         }}
       >
-       AI-Powered Resume Builder
+       Craft ATS-Optimized
        <br />
-       for Standout Job Applications
+       Resumes Instantly
       </motion.h1>
       <motion.p
         initial={{ opacity: 0, x: -50 }}
@@ -33,9 +34,7 @@ const Hero: React.FC = () => {
           WebkitTextFillColor: 'transparent'
         }}
       >
-        Craft Your Perfect Resume with AI-Assisted Tools: Customize, Optimize, and
-        <br />
-        Stand Out in the Job Market.
+        Personalized, Powerful, and Ready to Impress – Tailored to Your Needs in Minutes.
       </motion.p>
 
       {/* Button to Resume Builder Page */}
@@ -43,13 +42,18 @@ const Hero: React.FC = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.5 }}
-        className="mt-12 flex justify-center"
+        className="font-poppins mt-12 flex flex-col items-center space-y-4"
       >
         <Link href="/build-resume">
           <Button className="py-3 px-6 rounded text-sm">
-           Build Your Resume
+            Join Waitlist
           </Button>
         </Link>
+
+        {/* <p className="flex items-center text-sm text-dark font-poppins">
+          <FaAsterisk className="mr-2" />
+          No sign up required
+        </p> */}
       </motion.div>
 
       {/* Hero Image */}
@@ -75,7 +79,7 @@ const Hero: React.FC = () => {
         />
       </motion.div>
 
-      <motion.p
+      {/* <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.5 }}
@@ -83,7 +87,7 @@ const Hero: React.FC = () => {
       >
         Harnessing AI-powered resume analysis to transform your professional experience into
         a compelling narrative, boosting your chances of landing your dream job.
-      </motion.p>
+      </motion.p> */}
     </main>
   );
 };
