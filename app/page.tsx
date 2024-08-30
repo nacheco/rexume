@@ -6,9 +6,9 @@ import SectionHeading from "@/components/SectionHeading";
 export default function Home() {
 
   return (
-    <div className="bg-orange-white text-charcoal-black font-sans min-h-screen overflow-hidden relative">
+    <div className="">
       <Hero />
-      <SectionHeading title="How it works" description="Our platform is designed to help you learn and retain information more effectively. Here's how it works:" />
+      <SectionHeading title="How it works" description="Our AI-powered platform is designed to create tailored, ATS-optimized resumes in minutes. Here's how it works:" />
       <Features />
     </div>
   );

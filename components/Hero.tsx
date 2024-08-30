@@ -66,11 +66,11 @@ const Hero: React.FC = () => {
           boxShadow: "0 0 50px 2px rgba(255, 255, 255, 0.6)",
         }}
       >
-        <div className="absolute inset-0 bg-primary opacity-30 filter blur-3xl"></div>
+        <div className="absolute inset-0 bg-primary opacity-30 filter blur-2xl"></div>
         <video
           src="https://videos.pexels.com/video-files/9669049/9669049-hd_1920_1080_25fps.mp4"
-          width={1200}
-          height={600}
+          width={1400}
+          height={1080}
           autoPlay
           loop
           muted

@@ -11,7 +11,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({ title, description }) =
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="container mx-auto px-4 py-8 md:py-16"
+      className="container mx-auto px-4 py-8 md:py-36"
     >
       <h2 className="font-gilda text-4xl md:text-5xl text-center text-charcoal-black mb-6">
         {title}

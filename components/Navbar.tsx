@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
         animate={{ opacity: 1 }}
       >
         <Link href="/" className="flex items-center">
-          <Image src="/images/logo.svg" alt="Logo" width={80} height={26} />
+          <Image src="/images/logo.svg" alt="Logo" width={90} height={26} />
         </Link>
       </motion.div>
       <motion.div 
