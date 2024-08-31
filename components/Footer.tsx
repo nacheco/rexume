@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
-// import { addToWaitlist } from "@/utils/waitlistOperations";
+import { addToWaitlist } from "@/lib/waitlist";
 
 const Footer: React.FC = () => {
   const containerVariants = {
@@ -33,43 +33,51 @@ const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isWarning, setIsWarning] = useState(false);
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-
-    // Simulating a successful submission
-    setTimeout(() => {
+    try {
+      const result = await addToWaitlist(name, email);
+      console.log("Waitlist result:", result); // Add this line
+      if (result.success) {
+        setIsSuccess(true);
+        toast({
+          title: "Success!",
+          description: "You've been added to the waitlist.",
+          duration: 5000,
+        });
+      } else if (result.error === 'already-exists') {
+        console.log("User already exists, showing toast"); // Add this line
+        toast({
+          title: "Already on waitlist",
+          description: "This email is already registered on the waitlist.",
+          variant: "default",
+          duration: 5000,
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "An unknown error occurred. Please try again.",
+          variant: "destructive",
+          duration: 5000,
+        });
+      }
+    } catch (error) {
+      console.error("Unexpected error:", error); // Add this line
       toast({
-        title: "Success!",
-        description: "You've been added to the waitlist. Check your email for confirmation.",
+        title: "Error",
+        description: "An unexpected error occurred. Please try again.",
+        variant: "destructive",
+        duration: 5000,
       });
-      setIsSuccess(true);
+    } finally {
       setIsLoading(false);
-    }, 1000);
-
-    // try {
-    //   const success = await addToWaitlist(name, email);
-    //   if (success) {
-    //     toast({
-    //       title: "Success!",
-    //       description: "You've been added to the waitlist. Check your email for confirmation.",
-    //     });
-    //     setIsSuccess(true);
-    //   } else {
-    //     throw new Error('Failed to join waitlist');
-    //   }
-    // } catch (error) {
-    //   toast({
-    //     title: "Error",
-    //     description: "Failed to join the waitlist. Please try again.",
-    //     variant: "destructive",
-    //   });
-    // } finally {
-    //   setIsLoading(false);
-    // }
+    }
   };
+
   return (
     <motion.footer
       className="bg-orange-white font-poppins"
@@ -134,18 +142,11 @@ const Footer: React.FC = () => {
               <motion.div variants={itemVariants}>
                 <Button 
                   type="submit" 
-                  className={`w-full mt-6 ${isSuccess ? 'bg-green-500 hover:bg-green-600' : ''} text-dark`} 
-                  variant={isSuccess ? "secondary" : "secondary"}
+                  className={`w-full mt-6 ${isSuccess ? 'bg-green-500 hover:bg-green-600' : ''}`}
+                  variant={isSuccess ? "secondary" : "default"}
                   disabled={isLoading || isSuccess}
                 >
-                  {isLoading ? "Joining..." : isSuccess ? (
-                    <span className="flex items-center justify-center">
-                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                      </svg>
-                      Joined
-                    </span>
-                  ) : "Join waitlist"}
+                  {isLoading ? "Joining..." : isSuccess ? "Added to waitlist!" : "Join waitlist"}
                 </Button>
               </motion.div>
             </form>

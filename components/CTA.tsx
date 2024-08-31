@@ -9,9 +9,9 @@ const CTA: React.FC = () => {
       <p className="text-center text-sm sm:text-base mb-6 sm:mb-8">No sign-up, no credit card, no strings attached. Get your professional resume in just 5 minutes!</p>
       
       <div className="flex justify-center mb-6 sm:mb-8">
-        <Link href="/create-resume" className="bg-dark py-2 sm:py-3 px-4 sm:px-6 rounded-xl text-xs sm:text-sm transition duration-300 border">
+        <button disabled className="bg-dark py-2 sm:py-3 px-4 sm:px-6 rounded-xl text-xs sm:text-sm transition duration-300 border opacity-50 cursor-not-allowed">
           Coming Soon!
-        </Link>
+        </button>
       </div>
       
       <div className="grid grid-cols-1  lg:grid-cols-3 gap-4 sm:gap-6">
