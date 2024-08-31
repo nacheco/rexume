@@ -13,8 +13,8 @@ export default function Home() {
       <SectionHeading title="Create Your Resume in 4 Easy Steps" description="Our free, no-strings-attached platform lets you build a professional resume in minutes. Here's how:" />
       <Features />
       <SectionHeading 
-        title="Unlock Your Career Potential" 
-        description="Explore our diverse range of professionally designed resume templates. Find the perfect style to showcase your unique skills and experience."
+        title="One Template, Endless Opportunities" 
+        description="Skip the template overload. Our single, expertly crafted resume design is attractive, readable, and fully customizable. Get more interviews with less effort."
       />
       <div className="container mx-auto rounded-3xl px-4 bg-dark">
         <TemplatesList />

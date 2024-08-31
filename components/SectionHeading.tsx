@@ -17,7 +17,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({ title, description, dar
       <h2 className={`font-gilda text-4xl md:text-5xl text-center ${darkBackground ? 'text-white' : 'text-charcoal-black'} mb-6`}>
         {title}
       </h2>
-      <p className={`text-md text-center ${darkBackground ? 'text-white/70' : 'text-dark/70'} max-w-xl mx-auto`}>
+      <p className={`text-md text-center ${darkBackground ? 'text-white/70' : 'text-dark/70'} max-w-2xl mx-auto`}>
         {description}
       </p>
     </motion.div>

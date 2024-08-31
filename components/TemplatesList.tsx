@@ -12,7 +12,6 @@ import {
 interface Template {
   id: number;
   name: string;
-  rating: number;
   imageSrc: string;
   isAtsFriendly: boolean;
 }
@@ -20,30 +19,20 @@ interface Template {
 const templates: Template[] = [
   {
     id: 1,
-    name: 'Quick Resume Template',
-    rating: 4.9,
-    imageSrc: 'https://images.pexels.com/photos/11213182/pexels-photo-11213182.jpeg',
+    name: 'Simple but effective',
+    imageSrc: '/images/resume-template-1.png',
     isAtsFriendly: true,
   },
   {
     id: 2,
-    name: 'Instant CV Builder',
-    rating: 4.9,
-    imageSrc: 'https://images.pexels.com/photos/11213182/pexels-photo-11213182.jpeg',
+    name: 'Modern',
+    imageSrc: '/images/resume-template-1.png',
     isAtsFriendly: true,
   },
   {
     id: 3,
-    name: '5-Minute Resume',
-    rating: 4.8,
-    imageSrc: 'https://images.pexels.com/photos/11213182/pexels-photo-11213182.jpeg',
-    isAtsFriendly: true,
-  },
-  {
-    id: 4,
-    name: 'Express Resume Maker',
-    rating: 4.8,
-    imageSrc: 'https://images.pexels.com/photos/11213182/pexels-photo-11213182.jpeg',
+    name: 'Minimalist',
+    imageSrc: '/images/resume-template-1.png',
     isAtsFriendly: true,
   },
 ];
@@ -62,33 +51,32 @@ const ResumeTemplates: React.FC = () => {
           <CarouselContent>
             {templates.map((template) => (
               <CarouselItem key={template.id} className="basis-1/3">
-                <div className="bg-white rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:cursor-pointer mx-2">
+                <div className="relative overflow-hidden rounded-lg mx-2 group transition-shadow duration-300 hover:shadow-[0_0_15px_rgba(var(--secondary-rgb),0.5)]">
                   <Image
                     src={template.imageSrc}
                     alt={template.name}
-                    width={600}
-                    height={849}
-                    layout="responsive"
-                    className="object-cover"
+                    width={500}
+                    height={707}
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold">{template.name}</h3>
-                    <div className="flex items-center mt-3">
-                      <span className="text-yellow-400 mr-2 text-lg">★</span>
-                      <span className="text-lg">{template.rating}</span>
-                    </div>
-                    {template.isAtsFriendly && (
-                      <span className="inline-block bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full mt-3">
-                        ATS-FRIENDLY
-                      </span>
-                    )}
+                  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <h3 className="text-white text-xl font-semibold">{template.name}</h3>
                   </div>
+                  {template.isAtsFriendly && (
+                    <span className="absolute top-2 right-2 bg-slate-100/50 text-white text-sm px-3 py-1 rounded-full">
+                      ATS-FRIENDLY
+                    </span>
+                  )}
                 </div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          {templates.length > 3 && (
+            <>
+              <CarouselPrevious />
+              <CarouselNext />
+            </>
+          )}
         </Carousel>
       </div>
     </section>
