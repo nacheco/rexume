@@ -136,7 +136,7 @@ const Footer: React.FC = () => {
               
               <motion.div className="flex items-center mt-4" variants={itemVariants}>
                 <input type="checkbox" id="privacy-policy" name="privacy-policy" className="form-checkbox text-yellow-500 border-gray-100 rounded" required />
-                <label htmlFor="privacy-policy" className="ml-2 text-dark text-sm">I have read and agree to the <a href="#" className="underline">Privacy Policy</a></label>
+                <label htmlFor="privacy-policy" className="ml-2 text-dark text-sm">I have read and agree to the <a href="/privacy" className="underline">Privacy Policy</a></label>
               </motion.div>
               
               <motion.div variants={itemVariants}>
@@ -159,7 +159,7 @@ const Footer: React.FC = () => {
           <ul className="flex flex-wrap justify-center sm:justify-start space-x-4">
             <motion.li whileHover={{ scale: 1.05 }}><a href="#" className="hover:underline">Instagram</a></motion.li>
             <motion.li whileHover={{ scale: 1.05 }}><a href="#" className="hover:underline">TikTok</a></motion.li>
-            <motion.li whileHover={{ scale: 1.05 }}><a href="#" className="hover:underline">Privacy policy</a></motion.li>
+            <motion.li whileHover={{ scale: 1.05 }}><a href="/privacy" className="hover:underline">Privacy policy</a></motion.li>
           </ul>
           <motion.p variants={itemVariants} className="text-center sm:text-right">&copy; Rexume 2024</motion.p>
         </motion.nav>
