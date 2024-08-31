@@ -22,7 +22,7 @@ const config = {
         "main": "#FFF7ED",
         'primary': '#FE0196',
         'secondary': '#FB8C3E',
-        'dark': '#1F2125',
+        'dark': '##1A1A1A',
       },
       backgroundImage: {
         'gradient-primary': 'linear-gradient(180deg, rgba(254,1,150,1) 0%, rgba(251,140,62,1) 100%)',
@@ -44,7 +44,7 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       backgroundColor: {
-        'dark': '#1F2125',
+        'dark': '#1A1A1A',
       },
       fontFamily: {
         poppins: ["var(--font-poppins)"],

@@ -2,38 +2,41 @@ import CaptureCard from '@/components/CaptureCard';
 
 const featureData = [
   {
-    title: "AI-Powered Resume Creation",
-    description: "Our advanced AI analyzes your input and crafts a tailored resume that highlights your strengths and matches job requirements.",
+    title: "Lightning-Fast Resume Creation",
+    description: "Build a professional resume in just 5 minutes with our intuitive interface.",
     mediaContent: "https://videos.pexels.com/video-files/9669049/9669049-hd_1920_1080_25fps.mp4",
     isVideo: true,
-    backgroundColor: "#1F2125",
-    textColor: "#FFF7ED"
+    backgroundColor: "#1A1A1A",
+    titleColor: "#FB8C3E",
+    descriptionColor: "#FFF7ED"
   },
   {
-    title: "ATS Optimization",
-    description: "Ensure your resume passes through Applicant Tracking Systems with our ATS-friendly formatting and keyword optimization.",
+    title: "No Sign-Up Required",
+    description: "Start creating your resume instantly - no account creation or personal information needed.",
     mediaContent: "https://videos.pexels.com/video-files/9669049/9669049-hd_1920_1080_25fps.mp4",
     isVideo: true,
-    backgroundColor: "#6A6A6A",
-    textColor: "#FFF7ED"
+    backgroundColor: "#333333",
+    titleColor: "#FB8C3E",
+    descriptionColor: "#FFF7ED"
   },
   {
-    title: "Customizable Templates",
-    description: "Choose from a variety of professional templates that suit your industry and personal style.",
+    title: "100% Free, No Hidden Costs",
+    description: "Enjoy all features without any payment or credit card information - it's completely free.",
     mediaContent: "https://videos.pexels.com/video-files/9669049/9669049-hd_1920_1080_25fps.mp4",
     isVideo: true,
-    backgroundColor: "#E6831A",
-    textColor: "#FFF7ED"
+    backgroundColor: "#4D4D4D",
+    titleColor: "#FB8C3E",
+    descriptionColor: "#FFF7ED"
   },
   {
-    title: "Real-Time Editing",
-    description: "Make changes on the fly and see updates in real-time, ensuring your resume is always up-to-date and perfect.",
+    title: "Instant Download",
+    description: "Get your polished resume immediately - download as PDF or share online with a single click.",
     mediaContent: "https://videos.pexels.com/video-files/9669049/9669049-hd_1920_1080_25fps.mp4",
     isVideo: true,
-    backgroundColor: "#FEDEEC",
-    textColor: "#0D1321"
+    backgroundColor: "#1A1A1A",
+    titleColor: "#FB8C3E",
+    descriptionColor: "#FFF7ED"
   },
-  // Add more feature data as needed
 ];
 
 const Features: React.FC = () => {
@@ -43,9 +46,7 @@ const Features: React.FC = () => {
         <div 
           key={index}
           className="sticky top-0"
-          style={{
-            top: `calc(64px + ${index * 50}px)`
-          }}
+         
         >
           <CaptureCard
             title={feature.title}
@@ -53,7 +54,8 @@ const Features: React.FC = () => {
             mediaContent={feature.mediaContent}
             isVideo={feature.isVideo}
             backgroundColor={feature.backgroundColor}
-            textColor={feature.textColor}
+            titleColor={feature.titleColor}
+            descriptionColor={feature.descriptionColor}
           />
         </div>
       ))}

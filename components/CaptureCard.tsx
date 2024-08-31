@@ -7,15 +7,24 @@ interface CaptureCardProps {
   mediaContent: string;
   isVideo?: boolean;
   backgroundColor?: string;
-  textColor?: string;
+  titleColor?: string;
+  descriptionColor?: string;
 }
 
-const CaptureCard: React.FC<CaptureCardProps> = ({ title, description, mediaContent, isVideo = false, backgroundColor, textColor }) => {
+const CaptureCard: React.FC<CaptureCardProps> = ({ 
+  title, 
+  description, 
+  mediaContent, 
+  isVideo = false, 
+  backgroundColor, 
+  titleColor, 
+  descriptionColor 
+}) => {
   return (
     <div className="container h-[50vh] mx-auto flex flex-col lg:flex-row rounded-3xl overflow-hidden shadow-lg" style={{ backgroundColor }}>
       <div className="w-full lg:w-1/2 p-8 flex flex-col justify-center">
-        <h2 className="text-4xl font-bold mb-4" style={{ color: textColor }}>{title}</h2>
-        <p style={{ color: textColor }}>{description}</p>
+        <h2 className={`font-gilda text-5xl mb-4`} style={{ color: titleColor }}>{title}</h2>
+        <p className="max-w-sm text-md" style={{ color: descriptionColor }}>{description}</p>
       </div>
       <div className="w-full lg:w-1/2 p-8 overflow-hidden">
         {isVideo ? (

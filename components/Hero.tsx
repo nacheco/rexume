@@ -79,15 +79,14 @@ const Hero: React.FC = () => {
         />
       </motion.div>
 
-      {/* <motion.p
+      <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.5 }}
-        className="text-base sm:text-lg mt-6 bg-clip-text text-transparent bg-gradient-to-r from-dark via-primary to-secondary"
+        className="text-base sm:text-lg mt-6 bg-clip-text text-dark"
       >
-        Harnessing AI-powered resume analysis to transform your professional experience into
-        a compelling narrative, boosting your chances of landing your dream job.
-      </motion.p> */}
+        Create a standout resume in minutes with our AI-powered tool - no strings attached, no sign-up required.
+      </motion.p>
     </main>
   );
 };
