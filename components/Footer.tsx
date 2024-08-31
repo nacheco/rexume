@@ -78,11 +78,11 @@ const Footer: React.FC = () => {
       animate="visible"
       variants={containerVariants}
     >
-      <div className="container mx-auto px-4 py-16 md:py-24 lg:py-32">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 lg:gap-24">
-          <motion.div className="text-center md:text-left" variants={itemVariants}>
+      <div className="container mx-auto px-4 py-8 sm:py-12 md:py-16 lg:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+          <motion.div className="text-center lg:text-left" variants={itemVariants}>
             <motion.h1 
-              className="font-gilda text-[54px] sm:text-[64px] md:text-[74px] lg:text-[100px] leading-[0.9] mb-4 text-dark tracking-[-0.05em]"
+              className="font-gilda text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight mb-4 text-dark tracking-tight"
               variants={itemVariants}
             >
               Stay tuned for
@@ -92,13 +92,13 @@ const Footer: React.FC = () => {
               full launch
             </motion.h1>
             <motion.p 
-              className="text-dark text-base sm:text-lg md:text-xl mt-4 sm:mt-6 tracking-tight"
+              className="text-dark text-base sm:text-lg lg:text-xl mt-4 tracking-tight"
               variants={itemVariants}
             >
               Subscribe to not miss out on any news!
             </motion.p>
           </motion.div>
-          <motion.div className="space-y-4 md:flex md:justify-center md:items-center" variants={itemVariants}>
+          <motion.div className="flex justify-center items-center" variants={itemVariants}>
             <form onSubmit={handleSubmit} className="w-full max-w-md">
               <motion.input 
                 type="text" 
@@ -118,7 +118,7 @@ const Footer: React.FC = () => {
                 id="email" 
                 name="email" 
                 placeholder="Email address" 
-                className="w-full px-4 py-2 rounded-md border border-gray-100 focus:outline-none focus:ring focus:border-deep-orange focus:ring-deep-orange mt-6 text-dark"
+                className="w-full px-4 py-2 rounded-md border border-gray-100 focus:outline-none focus:ring focus:border-deep-orange focus:ring-deep-orange mt-4 text-dark"
                 variants={itemVariants}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -126,15 +126,15 @@ const Footer: React.FC = () => {
                 required
               />
               
-              <motion.div className="flex items-center mt-6" variants={itemVariants}>
+              <motion.div className="flex items-center mt-4" variants={itemVariants}>
                 <input type="checkbox" id="privacy-policy" name="privacy-policy" className="form-checkbox text-yellow-500 border-gray-100 rounded" required />
-                <label htmlFor="privacy-policy" className="ml-2 text-dark">I have read and agree to the <a href="#" className="underline">Privacy Policy</a></label>
+                <label htmlFor="privacy-policy" className="ml-2 text-dark text-sm">I have read and agree to the <a href="#" className="underline">Privacy Policy</a></label>
               </motion.div>
               
               <motion.div variants={itemVariants}>
                 <Button 
                   type="submit" 
-                  className={`w-full mt-8 ${isSuccess ? 'bg-green-500 hover:bg-green-600' : ''} text-dark`} 
+                  className={`w-full mt-6 ${isSuccess ? 'bg-green-500 hover:bg-green-600' : ''} text-dark`} 
                   variant={isSuccess ? "secondary" : "secondary"}
                   disabled={isLoading || isSuccess}
                 >
@@ -152,15 +152,15 @@ const Footer: React.FC = () => {
           </motion.div>
         </div>
         <motion.nav 
-          className="flex flex-col md:flex-row justify-between text-dark mt-16 space-y-4 md:space-y-0"
+          className="flex flex-col sm:flex-row justify-between text-dark mt-8 sm:mt-12 space-y-4 sm:space-y-0"
           variants={itemVariants}
         >
-          <ul className="flex space-x-4">
+          <ul className="flex flex-wrap justify-center sm:justify-start space-x-4">
             <motion.li whileHover={{ scale: 1.05 }}><a href="#" className="hover:underline">Instagram</a></motion.li>
             <motion.li whileHover={{ scale: 1.05 }}><a href="#" className="hover:underline">TikTok</a></motion.li>
             <motion.li whileHover={{ scale: 1.05 }}><a href="#" className="hover:underline">Privacy policy</a></motion.li>
           </ul>
-          <motion.p variants={itemVariants}>&copy; Rexume 2024</motion.p>
+          <motion.p variants={itemVariants} className="text-center sm:text-right">&copy; Rexume 2024</motion.p>
         </motion.nav>
       </div>
     </motion.footer>

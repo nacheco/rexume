@@ -1,11 +1,12 @@
-import CaptureCard from '@/components/CaptureCard';
+import FeatureCard from '@/components/FeatureCard';
+import Image from 'next/image';
 
 const featureData = [
   {
     title: "Lightning-Fast Resume Creation",
     description: "Build a professional resume in just 5 minutes with our intuitive interface.",
-    mediaContent: "https://videos.pexels.com/video-files/9669049/9669049-hd_1920_1080_25fps.mp4",
-    isVideo: true,
+    mediaContent: "/images/doodle-1.png",
+    isVideo: false,
     backgroundColor: "#1A1A1A",
     titleColor: "#FB8C3E",
     descriptionColor: "#FFF7ED"
@@ -13,8 +14,8 @@ const featureData = [
   {
     title: "No Sign-Up Required",
     description: "Start creating your resume instantly - no account creation or personal information needed.",
-    mediaContent: "https://videos.pexels.com/video-files/9669049/9669049-hd_1920_1080_25fps.mp4",
-    isVideo: true,
+    mediaContent: "/images/doodle-2.png",
+    isVideo: false,
     backgroundColor: "#333333",
     titleColor: "#FB8C3E",
     descriptionColor: "#FFF7ED"
@@ -22,8 +23,8 @@ const featureData = [
   {
     title: "100% Free, No Hidden Costs",
     description: "Enjoy all features without any payment or credit card information - it's completely free.",
-    mediaContent: "https://videos.pexels.com/video-files/9669049/9669049-hd_1920_1080_25fps.mp4",
-    isVideo: true,
+    mediaContent: "/images/doodle-3.png",
+    isVideo: false,
     backgroundColor: "#4D4D4D",
     titleColor: "#FB8C3E",
     descriptionColor: "#FFF7ED"
@@ -31,8 +32,8 @@ const featureData = [
   {
     title: "Instant Download",
     description: "Get your polished resume immediately - download as PDF or share online with a single click.",
-    mediaContent: "https://videos.pexels.com/video-files/9669049/9669049-hd_1920_1080_25fps.mp4",
-    isVideo: true,
+    mediaContent: "/images/doodle-4.png",
+    isVideo: false,
     backgroundColor: "#1A1A1A",
     titleColor: "#FB8C3E",
     descriptionColor: "#FFF7ED"
@@ -41,14 +42,13 @@ const featureData = [
 
 const Features: React.FC = () => {
   return (
-    <section className="space-y-16 mx-8 lg:mx-36">
+    <section className="space-y-16">
       {featureData.map((feature, index) => (
         <div 
           key={index}
           className="sticky top-0"
-         
         >
-          <CaptureCard
+          <FeatureCard
             title={feature.title}
             description={feature.description}
             mediaContent={feature.mediaContent}

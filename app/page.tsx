@@ -8,7 +8,7 @@ import CTA from "@/components/CTA";
 export default function Home() {
 
   return (
-    <>
+    <main className="mx-8 lg:mx-36">
       <Hero />
       <SectionHeading title="Create Your Resume in 4 Easy Steps" description="Our free, no-strings-attached platform lets you build a professional resume in minutes. Here's how:" />
       <Features />
@@ -22,6 +22,6 @@ export default function Home() {
       <div className="my-16 container mx-auto rounded-3xl px-4 bg-dark">
         <CTA />
       </div>  
-    </>
+    </main>
   );
 }

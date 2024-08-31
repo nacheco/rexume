@@ -29,3 +29,10 @@
         border-radius: 10px;
     }
 }
+
+::selection {
+    color: #1E1E1E;
+    /* dark color */
+    background-color: #FB8C3E;
+    /* orange color */
+}
