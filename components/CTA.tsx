@@ -5,7 +5,7 @@ import Link from 'next/link';
 const CTA: React.FC = () => {
   return (
     <div className="bg-dark text-main p-4 sm:p-6 md:p-8 rounded-3xl">
-      <h2 className="font-gilda text-3xl sm:text-4xl md:text-5xl text-center mb-4">Create Your Perfect Resume Now - It's Free!</h2>
+      <h2 className="font-gilda text-3xl sm:text-4xl md:text-5xl text-center mb-4">Create Your Perfect Resume Now - It&apos;s Free!</h2>
       <p className="text-center text-sm sm:text-base mb-6 sm:mb-8">No sign-up, no credit card, no strings attached. Get your professional resume in just 5 minutes!</p>
       
       <div className="flex justify-center mb-6 sm:mb-8">
