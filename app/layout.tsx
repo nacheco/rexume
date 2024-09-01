@@ -3,6 +3,7 @@ import { Poppins, Gilda_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Toaster } from "@/components/ui/toaster";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -15,19 +16,20 @@ const gildaDisplay = Gilda_Display({
   weight: ["400"],
   variable: "--font-gilda-display",
 });
+
 export const metadata: Metadata = {
-  title: "Rexume - Create Professional Resumes in Minutes",
-  description: "Build a standout resume with our free, easy-to-use platform. Craft your professional story and land your dream job with Resumate.",
-  keywords: "resume builder, professional resume, free resume template, job application, career tools",
+  title: "Rexume - Free Resume Builder, No Sign-Up Required",
+  description: "Create a professional resume in minutes with Rexume. No account needed, 100% free, and instant download.",
+  keywords: "resume builder, free resume, no sign-up, instant download, professional resume",
   openGraph: {
-    title: "Rexume - Create Professional Resumes in Minutes",
-    description: "Build a standout resume with our free, easy-to-use platform. Craft your professional story and land your dream job with Resumate.",
+    title: "Rexume - Free Resume Builder, No Sign-Up Required",
+    description: "Create a professional resume in minutes with Rexume. No account needed, 100% free, and instant download.",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/images/SEO.png",
         width: 1200,
         height: 630,
-        alt: "Rexume - Professional Resume Builder",
+        alt: "Rexume - Free Resume Builder",
       },
     ],
   },
@@ -44,6 +46,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <Toaster />
       </body>
     </html>
   );

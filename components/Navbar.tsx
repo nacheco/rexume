@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
             }
           }}
         >
-          <Link href="/learn-more" className="text-sm text-dark px-4 py-2 rounded hover:bg-dark/90 transition-colors opacity-50 cursor-not-allowed pointer-events-none">
+          <Link href="#" className="text-sm text-dark px-4 py-2 rounded hover:bg-dark/90 transition-colors opacity-50 cursor-not-allowed pointer-events-none">
             Coming Soon!
           </Link>
         </motion.div>

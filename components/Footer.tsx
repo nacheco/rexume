@@ -41,7 +41,6 @@ const Footer: React.FC = () => {
     setIsLoading(true);
     try {
       const result = await addToWaitlist(name, email);
-      console.log("Waitlist result:", result); // Add this line
       if (result.success) {
         setIsSuccess(true);
         toast({
@@ -50,7 +49,6 @@ const Footer: React.FC = () => {
           duration: 5000,
         });
       } else if (result.error === 'already-exists') {
-        console.log("User already exists, showing toast"); // Add this line
         toast({
           title: "Already on waitlist",
           description: "This email is already registered on the waitlist.",
@@ -66,7 +64,6 @@ const Footer: React.FC = () => {
         });
       }
     } catch (error) {
-      console.error("Unexpected error:", error); // Add this line
       toast({
         title: "Error",
         description: "An unexpected error occurred. Please try again.",
@@ -105,6 +102,12 @@ const Footer: React.FC = () => {
             >
               Subscribe to not miss out on any news!
             </motion.p>
+            <motion.p 
+              className="text-sm mt-2 tracking-tight text-secondary/80"
+              variants={itemVariants}
+            >
+           This waitlist is temporary and it&apos;s only purpose is to notify you when we launch.
+            </motion.p>
           </motion.div>
           <motion.div className="flex justify-center items-center" variants={itemVariants}>
             <form onSubmit={handleSubmit} className="w-full max-w-md">
@@ -136,7 +139,7 @@ const Footer: React.FC = () => {
               
               <motion.div className="flex items-center mt-4" variants={itemVariants}>
                 <input type="checkbox" id="privacy-policy" name="privacy-policy" className="form-checkbox text-yellow-500 border-gray-100 rounded" required />
-                <label htmlFor="privacy-policy" className="ml-2 text-dark text-sm">I have read and agree to the <a href="#" className="underline">Privacy Policy</a></label>
+                <label htmlFor="privacy-policy" className="ml-2 text-dark text-sm">I have read and agree to the <a href="/privacy" className="underline">Privacy Policy</a></label>
               </motion.div>
               
               <motion.div variants={itemVariants}>
@@ -157,9 +160,9 @@ const Footer: React.FC = () => {
           variants={itemVariants}
         >
           <ul className="flex flex-wrap justify-center sm:justify-start space-x-4">
-            <motion.li whileHover={{ scale: 1.05 }}><a href="#" className="hover:underline">Instagram</a></motion.li>
-            <motion.li whileHover={{ scale: 1.05 }}><a href="#" className="hover:underline">TikTok</a></motion.li>
-            <motion.li whileHover={{ scale: 1.05 }}><a href="#" className="hover:underline">Privacy policy</a></motion.li>
+            <motion.li whileHover={{ scale: 1.05 }}><a href="https://www.instagram.com/rexume.me/" className="hover:underline">Instagram</a></motion.li>
+            <motion.li whileHover={{ scale: 1.05 }}><a href="https://www.tiktok.com/@rexume.me" className="hover:underline">TikTok</a></motion.li>
+            <motion.li whileHover={{ scale: 1.05 }}><a href="/privacy" className="hover:underline">Privacy policy</a></motion.li>
           </ul>
           <motion.p variants={itemVariants} className="text-center sm:text-right">&copy; Rexume 2024</motion.p>
         </motion.nav>
