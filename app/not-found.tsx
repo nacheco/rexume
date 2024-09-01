@@ -14,7 +14,7 @@ export default function NotFound() {
         <h1 className="font-gilda text-6xl sm:text-7xl md:text-8xl mb-4 text-dark">404</h1>
         <h2 className="font-gilda text-3xl sm:text-4xl md:text-5xl mb-6 text-dark">Page Not Found</h2>
         <p className="text-lg mb-8 text-dark/70 max-w-md mx-auto">
-          Oops! The page you're looking for doesn't exist. It might have been moved or deleted.
+          Oops! The page you&apos;re looking for doesn&apos;t exist. It might have been moved or deleted.
         </p>
         <Link href="/">
           <Button className="py-2 px-4 text-base">
