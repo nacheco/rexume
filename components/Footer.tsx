@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
     setIsLoading(true);
     try {
       const result = await addToWaitlist(name, email);
-      console.log("Waitlist result:", result); // Add this line
+      console.log("Waitlist result:", result);
       if (result.success) {
         setIsSuccess(true);
         toast({
@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
           duration: 5000,
         });
       } else if (result.error === 'already-exists') {
-        console.log("User already exists, showing toast"); // Add this line
+        console.log("User already exists, showing toast");
         toast({
           title: "Already on waitlist",
           description: "This email is already registered on the waitlist.",
@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
         });
       }
     } catch (error) {
-      console.error("Unexpected error:", error); // Add this line
+      console.error("Unexpected error:", error);
       toast({
         title: "Error",
         description: "An unexpected error occurred. Please try again.",
@@ -104,6 +104,12 @@ const Footer: React.FC = () => {
               variants={itemVariants}
             >
               Subscribe to not miss out on any news!
+            </motion.p>
+            <motion.p 
+              className="text-sm mt-2 tracking-tight text-secondary/80"
+              variants={itemVariants}
+            >
+           This waitlist is temporary and it's only purpose is to notify you when we launch.
             </motion.p>
           </motion.div>
           <motion.div className="flex justify-center items-center" variants={itemVariants}>
