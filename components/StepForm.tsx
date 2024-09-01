@@ -1,8 +1,8 @@
 "use client";
-
+import { Props } from "@/types/props";
 import { motion } from "framer-motion";
 
-const StepForm = ({
+const StepForm: React.FC<Props> = ({
   step,
   fields,
 
@@ -21,6 +21,10 @@ const StepForm = ({
   handleSkillChange,
   addSkill,
 
+  more,
+  handleMoreSectionChange,
+  addMore,
+
   prevStep,
   nextStep,
 }) => {
@@ -38,7 +42,7 @@ const StepForm = ({
         fields.length &&
         fields.map((field) => (
           <div key={field?.name} className="w-[40vw] ">
-            <h2 >{field?.name}</h2>
+            <h2>{field?.name}</h2>
             <input
               className="w-[100%] mb-4 mt-1"
               type={field?.type}
@@ -129,7 +133,7 @@ const StepForm = ({
         skills.length &&
         skills.map((skill, index) => (
           <div key={index} className="w-[40vw] p-4 my-4">
-            <h2 >Skill {index + 1}</h2>
+            <h2>Skill {index + 1}</h2>
             {fields.length &&
               fields?.map((field) => (
                 <div key={field.name} className="my-2">
@@ -162,6 +166,47 @@ const StepForm = ({
           Add Skill
         </button>
       )}
+      {/* Step 4: Add More Fields */}
+      {step === 5 && <h1 className="text-2xl">Add Customized Section</h1>}
+      {step === 5 &&
+        more.length &&
+        more.map((more, index) => (
+          <div key={index} className="w-[40vw] p-4 my-4">
+            <h2>Customized Section {index + 1}</h2>
+            {fields.length &&
+              fields?.map((field) => (
+                <div key={field.name} className="my-2">
+                  <input
+                    className="w-[100%]"
+                    type={field.type}
+                    placeholder={field.placeholder}
+                    value={
+                      more[field?.name?.toLowerCase().replace(" ", "")] || ""
+                    }
+                    onChange={(e) =>
+                      handleMoreSectionChange(
+                        index,
+                        field.name.toLowerCase().replace(" ", ""),
+                        e.target.value
+                      )
+                    }
+                  />
+                </div>
+              ))}
+          </div>
+        ))}
+
+      {/* Button to Add More Education History Sections */}
+      {step === 5 && (
+        <button
+          onClick={addMore}
+          className="my-4 bg-black text-white px-4 py-2 rounded"
+        >
+          Add Customized Section
+        </button>
+      )}
+
+   
 
       {/* Navigation Buttons */}
       <div className="flex space-x-4 my-8">
@@ -182,12 +227,14 @@ const StepForm = ({
           </button>
         )}
         {!nextStep && (
-          <button
-            type="submit"
-            className="bg-[#FB8C3E] text-white px-4 py-2 rounded"
-          >
-            Generate Resume
-          </button>
+          <>
+            <button
+              type="submit"
+              className="bg-[#FB8C3E] text-white px-4 py-2 rounded"
+            >
+              Generate Resume
+            </button>
+          </>
         )}
       </div>
     </motion.div>

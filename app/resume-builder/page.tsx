@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import StepForm from "@/components/StepForm";
+import { Props } from "@/types/props";
 
 const ResumeBuilder = () => {
   const [step, setStep] = useState(0);
@@ -29,7 +30,7 @@ const ResumeBuilder = () => {
       description: "",
     },
   ]);
-
+  const [more, setMore] = useState([{ sectionName: "", sectionDetails: "" }]);
   // Load data from localStorage
   useEffect(() => {
     const storedData = localStorage.getItem("resumeData");
@@ -39,37 +40,62 @@ const ResumeBuilder = () => {
       setWorkExperiences(parsedData.workExperiences || []);
       setEducationHistory(parsedData.educationHistory || []);
       setSkills(parsedData.skills || []);
+      setMore(parsedData.skills || []);
     }
   }, []);
 
   useEffect(() => {
     localStorage.setItem(
       "resumeData",
-      JSON.stringify({ aboutMe, workExperiences, educationHistory, skills })
+      JSON.stringify({
+        aboutMe,
+        workExperiences,
+        educationHistory,
+        skills,
+        more,
+      })
     );
-  }, [aboutMe, workExperiences, educationHistory, skills]);
+  }, [aboutMe, workExperiences, educationHistory, skills, more]);
 
-  const handleAboutMeChange = (key, value) => {
+  const handleAboutMeChange = (key: string, value: string) => {
     setAboutMe((prev) => ({ ...prev, [key]: value }));
   };
 
-  const handleWorkExperienceChange = (index, field, value) => {
-    const updatedExperiences = workExperiences.map((experience, i) =>
+  const handleWorkExperienceChange = (
+    index: number,
+    field: string,
+    value: string
+  ) => {
+    const updatedExperiences = workExperiences.map((experience, i: number) =>
       i === index ? { ...experience, [field]: value } : experience
     );
     setWorkExperiences(updatedExperiences);
   };
-  const handleEducationHistoryChange = (index, field, value) => {
+  const handleEducationHistoryChange = (
+    index: number,
+    field: string,
+    value: string
+  ) => {
     const updatedEducationHistory = educationHistory.map((edu, i) =>
       i === index ? { ...edu, [field]: value } : edu
     );
     setEducationHistory(updatedEducationHistory);
   };
-  const handleSkillChange = (index, field, value) => {
+  const handleSkillChange = (index: number, field: string, value: string) => {
     const updatedSkills = skills.map((skill, i) =>
       i === index ? { ...skill, [field]: value } : skill
     );
     setSkills(updatedSkills);
+  };
+  const handleMoreSectionChange = (
+    index: number,
+    field: string,
+    value: string
+  ) => {
+    const updatedMoreSection = more.map((item, i) =>
+      i === index ? { ...item, [field]: value } : item
+    );
+    setMore(updatedMoreSection);
   };
 
   // Add a new work experience
@@ -100,6 +126,9 @@ const ResumeBuilder = () => {
   };
   const addSkill = () => {
     setSkills([...skills, { description: "" }]);
+  };
+  const addMore = () => {
+    setMore([...more, { sectionName: "", sectionDetails: "" }]);
   };
 
   const nextStep = () => setStep((prev) => prev + 1);
@@ -211,11 +240,28 @@ const ResumeBuilder = () => {
     },
     {
       step: 4,
-      fields: [{
-        name: "Description",
-        type: "text",
-        placeholder: "Add a Skill",
-      },],
+      fields: [
+        {
+          name: "Description",
+          type: "text",
+          placeholder: "Add a Skill",
+        },
+      ],
+    },
+    {
+      step: 5,
+      fields: [
+        {
+          name: "sectionName",
+          type: "text",
+          placeholder: "For example, Awards",
+        },
+        {
+          name: "sectionDetails",
+          type: "text",
+          placeholder: "For example, I won abc awards during an event",
+        },
+      ],
     },
   ];
 
@@ -231,18 +277,18 @@ const ResumeBuilder = () => {
                 fields={stepInfo.fields}
                 aboutMe={aboutMe}
                 handleAboutMeChange={handleAboutMeChange}
-
                 workExperiences={workExperiences}
                 handleWorkExperienceChange={handleWorkExperienceChange}
                 addWorkExperience={addWorkExperience}
-
                 educationHistory={educationHistory}
                 handleEducationHistoryChange={handleEducationHistoryChange}
                 addEducationHistory={addEducationHistory}
-
                 skills={skills}
                 handleSkillChange={handleSkillChange}
                 addSkill={addSkill}
+                more={more}
+                handleMoreSectionChange={handleMoreSectionChange}
+                addMore={addMore}
                 prevStep={index > 0 ? prevStep : null}
                 nextStep={index < steps.length - 1 ? nextStep : null}
               />
