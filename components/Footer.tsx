@@ -109,7 +109,7 @@ const Footer: React.FC = () => {
               className="text-sm mt-2 tracking-tight text-secondary/80"
               variants={itemVariants}
             >
-           This waitlist is temporary and it's only purpose is to notify you when we launch.
+           This waitlist is temporary and it&apos;s only purpose is to notify you when we launch.
             </motion.p>
           </motion.div>
           <motion.div className="flex justify-center items-center" variants={itemVariants}>

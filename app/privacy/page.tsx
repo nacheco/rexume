@@ -33,11 +33,11 @@ const PrivacyPage: React.FC = () => {
           <ul className="list-disc list-inside mb-4">
             <li>Your waitlist data (name and email) is stored securely on our servers.</li>
             <li>We comply with GDPR, offering data access, correction, and deletion requests.</li>
-            <li>We do not intentionally collect data from individuals under 16. If identified, such data will be deleted.</li>
+            <li>We don&apos;t intentionally collect data from individuals under 16. If identified, such data will be deleted.</li>
           </ul>
         </section>
 
-        <p className="mt-8">If you have any questions about our waitlist terms or privacy policy, please don't hesitate to <a href="#" className="text-secondary hover:underline">contact us</a>.</p>
+        <p className="mt-8">If you have any questions about our waitlist terms or privacy policy, please don&apos;t hesitate to <a href="#" className="text-secondary hover:underline">contact us</a>.</p>
       </div>
     </main>
   );
