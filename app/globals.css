@@ -40,3 +40,10 @@
     background-color: #FB8C3E;
     /* orange color */
 }
+
+input{
+height: 36px;
+border-radius: 6px;
+padding: 0 8px;
+}
+
