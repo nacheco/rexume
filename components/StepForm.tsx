@@ -47,8 +47,8 @@ const StepForm: React.FC<Props> = ({
               className="w-[100%] mb-4 mt-1"
               type={field?.type}
               placeholder={field.placeholder}
-              value={aboutMe[field?.name] || ""}
-              onChange={(e) => handleAboutMeChange(field.name, e.target.value)}
+              value={aboutMe[field?.name.toLowerCase().replace(" ", "")] || ""}
+              onChange={(e) => handleAboutMeChange(field.name.toLowerCase().replace(" ", ""), e.target.value)}
             />
           </div>
         ))}

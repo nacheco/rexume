@@ -4,13 +4,20 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import StepForm from "@/components/StepForm";
 import { Props } from "@/types/props";
+import ResumeTemplate from "@/components/ResumeTemplate";
 
 const ResumeBuilder = () => {
   const [step, setStep] = useState(0);
   const [aboutMe, setAboutMe] = useState({
     name: "",
+    title: "",
+    phone:"",
     email: "",
-    password: "",
+    location: "",
+    linkedin: "",
+    additionalinformation:"",
+    other:""
+
   });
   const [skills, setSkills] = useState([
     {
@@ -162,12 +169,12 @@ const ResumeBuilder = () => {
           placeholder: "Enter the link to your LinkedIn page",
         },
         {
-          name: "Other Social Media Link",
+          name: "Additional Information",
           type: "other1",
           placeholder: "Enter more links such as github profile...",
         },
         {
-          name: "Other Social Media Link 2",
+          name: "Other",
           type: "other2",
           placeholder: "Enter more links such as portfolio site...",
         },
@@ -268,7 +275,10 @@ const ResumeBuilder = () => {
   return (
     <div className="mx-auto my-50 w-[90vw] flex justify-center min-h-[fit-content]">
       <AnimatePresence mode="wait">
-        {steps.map(
+
+       <>
+       <ResumeTemplate aboutMe={aboutMe}/>
+       {steps.map(
           (stepInfo, index) =>
             step === index && (
               <StepForm
@@ -293,7 +303,7 @@ const ResumeBuilder = () => {
                 nextStep={index < steps.length - 1 ? nextStep : null}
               />
             )
-        )}
+        )}</>
       </AnimatePresence>
     </div>
   );
