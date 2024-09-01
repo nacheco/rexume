@@ -41,7 +41,6 @@ const Footer: React.FC = () => {
     setIsLoading(true);
     try {
       const result = await addToWaitlist(name, email);
-      console.log("Waitlist result:", result);
       if (result.success) {
         setIsSuccess(true);
         toast({
@@ -50,7 +49,6 @@ const Footer: React.FC = () => {
           duration: 5000,
         });
       } else if (result.error === 'already-exists') {
-        console.log("User already exists, showing toast");
         toast({
           title: "Already on waitlist",
           description: "This email is already registered on the waitlist.",
@@ -66,7 +64,6 @@ const Footer: React.FC = () => {
         });
       }
     } catch (error) {
-      console.error("Unexpected error:", error);
       toast({
         title: "Error",
         description: "An unexpected error occurred. Please try again.",
