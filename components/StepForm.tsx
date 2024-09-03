@@ -1,6 +1,7 @@
 "use client";
 import { Props } from "@/types/props";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const StepForm: React.FC<Props> = ({
   step,
@@ -48,7 +49,12 @@ const StepForm: React.FC<Props> = ({
               type={field?.type}
               placeholder={field.placeholder}
               value={aboutMe[field?.name.toLowerCase().replace(" ", "")] || ""}
-              onChange={(e) => handleAboutMeChange(field.name.toLowerCase().replace(" ", ""), e.target.value)}
+              onChange={(e) =>
+                handleAboutMeChange(
+                  field.name.toLowerCase().replace(" ", ""),
+                  e.target.value
+                )
+              }
             />
           </div>
         ))}
@@ -62,21 +68,41 @@ const StepForm: React.FC<Props> = ({
             <h2>Work Experience {index + 1}</h2>
             {fields.map((field) => (
               <div key={field.name} className="my-2">
-                <input
-                  className="w-[100%]"
-                  type={field.type}
-                  placeholder={field.placeholder}
-                  value={
-                    experience[field.name.toLowerCase().replace(" ", "")] || ""
-                  }
-                  onChange={(e) =>
-                    handleWorkExperienceChange(
-                      index,
-                      field.name.toLowerCase().replace(" ", ""),
-                      e.target.value
-                    )
-                  }
-                />
+                {field.name !== "Description" && (
+                  <input
+                    className="w-[100%]"
+                    type={field.type}
+                    placeholder={field.placeholder}
+                    value={
+                      experience[field.name.toLowerCase().replace(" ", "")] ||
+                      ""
+                    }
+                    onChange={(e) =>
+                      handleWorkExperienceChange(
+                        index,
+                        field.name.toLowerCase().replace(" ", ""),
+                        e.target.value
+                      )
+                    }
+                  />
+                )}
+                {field.name === "Description" && (
+                  <textarea
+                    className="w-[100%]"
+                    placeholder={field.placeholder}
+                    value={
+                      experience[field.name.toLowerCase().replace(" ", "")] ||
+                      ""
+                    }
+                    onChange={(e) =>
+                      handleWorkExperienceChange(
+                        index,
+                        field.name.toLowerCase().replace(" ", ""),
+                        e.target.value
+                      )
+                    }
+                  />
+                )}
               </div>
             ))}
           </div>
@@ -100,7 +126,7 @@ const StepForm: React.FC<Props> = ({
             <h2>Education {index + 1}</h2>
             {fields.map((field) => (
               <div key={field.name} className="my-2">
-                <input
+             {field.name!=="Description" &&   <input
                   className="w-[100%]"
                   type={field.type}
                   placeholder={field.placeholder}
@@ -112,7 +138,21 @@ const StepForm: React.FC<Props> = ({
                       e.target.value
                     )
                   }
-                />
+                />}
+
+                 {field.name==="Description" &&  <textarea
+                  className="w-[100%]"
+                  type={field.type}
+                  placeholder={field.placeholder}
+                  value={edu[field.name.toLowerCase().replace(" ", "")] || ""}
+                  onChange={(e) =>
+                    handleEducationHistoryChange(
+                      index,
+                      field.name.toLowerCase().replace(" ", ""),
+                      e.target.value
+                    )
+                  }
+                />}
               </div>
             ))}
           </div>
@@ -205,8 +245,6 @@ const StepForm: React.FC<Props> = ({
           Add Customized Section
         </button>
       )}
-
-   
 
       {/* Navigation Buttons */}
       <div className="flex space-x-4 my-8">

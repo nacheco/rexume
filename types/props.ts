@@ -13,9 +13,9 @@ export interface AboutMe {
 
 export interface WorkExperience {
   employer: string;
-  jobTitle: string;
-  startDate: string;
-  endDate: string;
+  jobtitle: string;
+  startdate: string;
+  enddate: string;
   description: string;
 }
 

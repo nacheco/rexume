@@ -11,13 +11,12 @@ const ResumeBuilder = () => {
   const [aboutMe, setAboutMe] = useState({
     name: "",
     title: "",
-    phone:"",
+    phone: "",
     email: "",
     location: "",
     linkedin: "",
-    additionalinformation:"",
-    other:""
-
+    additionalinformation: "",
+    other: "",
   });
   const [skills, setSkills] = useState([
     {
@@ -25,7 +24,7 @@ const ResumeBuilder = () => {
     },
   ]);
   const [workExperiences, setWorkExperiences] = useState([
-    { employer: "", jobTitle: "", startDate: "", endDate: "", description: "" },
+    { employer: "", jobtitle: "", startdate: "", enddate: "", description: "" },
   ]);
   const [educationHistory, setEducationHistory] = useState([
     {
@@ -206,7 +205,7 @@ const ResumeBuilder = () => {
         {
           name: "Description",
           type: "text",
-          placeholder: "Describe your work experience",
+          placeholder: "Describe your work experience, separating bullet points by period",
         },
       ],
     },
@@ -241,7 +240,7 @@ const ResumeBuilder = () => {
         {
           name: "Description",
           type: "text",
-          placeholder: "Describe your work experience",
+          placeholder: "Describe your educational experience, separating bullet points by period",
         },
       ],
     },
@@ -275,35 +274,40 @@ const ResumeBuilder = () => {
   return (
     <div className="mx-auto my-50 w-[90vw] flex justify-center min-h-[fit-content]">
       <AnimatePresence mode="wait">
-
-       <>
-       <ResumeTemplate aboutMe={aboutMe}/>
-       {steps.map(
-          (stepInfo, index) =>
-            step === index && (
-              <StepForm
-                key={`step${index}`}
-                step={stepInfo.step}
-                fields={stepInfo.fields}
-                aboutMe={aboutMe}
-                handleAboutMeChange={handleAboutMeChange}
-                workExperiences={workExperiences}
-                handleWorkExperienceChange={handleWorkExperienceChange}
-                addWorkExperience={addWorkExperience}
-                educationHistory={educationHistory}
-                handleEducationHistoryChange={handleEducationHistoryChange}
-                addEducationHistory={addEducationHistory}
-                skills={skills}
-                handleSkillChange={handleSkillChange}
-                addSkill={addSkill}
-                more={more}
-                handleMoreSectionChange={handleMoreSectionChange}
-                addMore={addMore}
-                prevStep={index > 0 ? prevStep : null}
-                nextStep={index < steps.length - 1 ? nextStep : null}
-              />
-            )
-        )}</>
+        <>
+          <ResumeTemplate
+            aboutMe={aboutMe}
+            skills={skills}
+            workExperiences={workExperiences}
+            educationHistory={educationHistory}
+          />
+          {steps.map(
+            (stepInfo, index) =>
+              step === index && (
+                <StepForm
+                  key={`step${index}`}
+                  step={stepInfo.step}
+                  fields={stepInfo.fields}
+                  aboutMe={aboutMe}
+                  handleAboutMeChange={handleAboutMeChange}
+                  workExperiences={workExperiences}
+                  handleWorkExperienceChange={handleWorkExperienceChange}
+                  addWorkExperience={addWorkExperience}
+                  educationHistory={educationHistory}
+                  handleEducationHistoryChange={handleEducationHistoryChange}
+                  addEducationHistory={addEducationHistory}
+                  skills={skills}
+                  handleSkillChange={handleSkillChange}
+                  addSkill={addSkill}
+                  more={more}
+                  handleMoreSectionChange={handleMoreSectionChange}
+                  addMore={addMore}
+                  prevStep={index > 0 ? prevStep : null}
+                  nextStep={index < steps.length - 1 ? nextStep : null}
+                />
+              )
+          )}
+        </>
       </AnimatePresence>
     </div>
   );
