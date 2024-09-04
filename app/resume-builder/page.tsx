@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import StepForm from "@/components/StepForm";
+import StepForm from "@/components/ResumeBuilder/StepForm";
 import { Props } from "@/types/props";
 import ResumeTemplate from "@/components/ResumeTemplate";
 
@@ -205,7 +205,8 @@ const ResumeBuilder = () => {
         {
           name: "Description",
           type: "text",
-          placeholder: "Describe your work experience, separating bullet points by period",
+          placeholder:
+            "Describe your work experience, separating bullet points by period",
         },
       ],
     },
@@ -240,7 +241,8 @@ const ResumeBuilder = () => {
         {
           name: "Description",
           type: "text",
-          placeholder: "Describe your educational experience, separating bullet points by period",
+          placeholder:
+            "Describe your educational experience, separating bullet points by period",
         },
       ],
     },

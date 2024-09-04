@@ -22,9 +22,9 @@ export interface WorkExperience {
 export interface Education {
   school: string;
   degree: string;
-  fieldOfStudy: string;
-  startDate: string;
-  endDate: string;
+  fieldofstudy: string;
+  startdate: string;
+  enddate: string;
   description: string;
 }
 
@@ -32,8 +32,8 @@ export interface Skill {
   description: string;
 }
 export interface More {
-  sectionName: string;
-  sectionDetails: string;
+  sectionname: string;
+  sectiondetails: string;
 }
 export interface Field {
   name: string;

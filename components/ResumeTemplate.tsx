@@ -8,7 +8,10 @@ const ResumeTemplate = ({
   workExperiences,
   educationHistory,
 }) => {
-  console.log(aboutMe);
+  const [isChecked, setIsChecked] = useState(false);
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
   return (
     <div className="w-[80vw] bg-white">
       {/* user info */}
@@ -25,20 +28,21 @@ const ResumeTemplate = ({
         </div>
         {workExperiences &&
           workExperiences?.map((work) => (
-            <div>
+            <>
               <h4 className="text-xl"> {work.employer}</h4>
               <div className="flex justify-between ">
                 <p className="text-sm mr-4">{work.jobtitle}</p>
                 <p className="text-xs mr-4">
                   {work.startdate} to {work.enddate}
                 </p>
+                
               </div>
               <ul>
                 {work.description.split(".").map((bullet) => (
                   <li className="text-sm mr-4">{bullet}</li>
                 ))}
               </ul>
-            </div>
+            </>
           ))}
       </div>
     </div>
