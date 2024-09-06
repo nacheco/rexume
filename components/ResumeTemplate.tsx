@@ -13,7 +13,7 @@ const ResumeTemplate = ({
     setIsChecked(!isChecked);
   };
   return (
-    <div className="w-[80vw] bg-white">
+    <div className="w-full h-[90vh] bg-white">
       {/* user info */}
       <div className="w-[100%]">
         <h4 className="text-2xl">{aboutMe.name}</h4>

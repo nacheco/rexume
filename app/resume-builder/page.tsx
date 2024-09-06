@@ -87,12 +87,20 @@ const ResumeBuilder = () => {
     );
     setEducationHistory(updatedEducationHistory);
   };
-  const handleSkillChange = (index: number, field: string, value: string) => {
-    const updatedSkills = skills.map((skill, i) =>
-      i === index ? { ...skill, [field]: value } : skill
-    );
+  const handleSkillChange = (index: number, value: string) => {
+    const updatedSkills = [...skills];
+    updatedSkills[index] = { description: value };
     setSkills(updatedSkills);
   };
+  
+  const addSkill = (description: string) => {
+    setSkills([...skills, { description }]);
+  };
+  
+  const removeSkill = (index: number) => {
+    setSkills(skills.filter((_, i) => i !== index));
+  };
+  
   const handleMoreSectionChange = (
     index: number,
     field: string,
@@ -129,9 +137,6 @@ const ResumeBuilder = () => {
         description: "",
       },
     ]);
-  };
-  const addSkill = () => {
-    setSkills([...skills, { description: "" }]);
   };
   const addMore = () => {
     setMore([...more, { sectionName: "", sectionDetails: "" }]);
@@ -273,8 +278,20 @@ const ResumeBuilder = () => {
     },
   ];
 
+  const removeWorkExperience = (index: number) => {
+    setWorkExperiences(prevExperiences => prevExperiences.filter((_, i) => i !== index));
+  };
+
+  const removeEducationHistory = (index: number) => {
+    setEducationHistory(prevEducation => prevEducation.filter((_, i) => i !== index));
+  };
+
+  const removeMore = (index: number) => {
+    setMore(prevMore => prevMore.filter((_, i) => i !== index));
+  };
+
   return (
-    <div className="mx-auto my-50 w-[90vw] flex justify-center min-h-[fit-content]">
+    <div className="mx-auto my-50 w-[90vw] flex justify-center gap-4 min-h-[fit-content]">
       <AnimatePresence mode="wait">
         <>
           <ResumeTemplate
@@ -298,14 +315,18 @@ const ResumeBuilder = () => {
                   educationHistory={educationHistory}
                   handleEducationHistoryChange={handleEducationHistoryChange}
                   addEducationHistory={addEducationHistory}
+                  removeEducationHistory={removeEducationHistory}
                   skills={skills}
                   handleSkillChange={handleSkillChange}
                   addSkill={addSkill}
+                  removeSkill={removeSkill}
                   more={more}
                   handleMoreSectionChange={handleMoreSectionChange}
                   addMore={addMore}
                   prevStep={index > 0 ? prevStep : null}
                   nextStep={index < steps.length - 1 ? nextStep : null}
+                  removeWorkExperience={removeWorkExperience}
+                  removeMore={removeMore}
                 />
               )
           )}

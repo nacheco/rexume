@@ -67,10 +67,12 @@ export interface Props {
     value: string
   ) => void;
   addEducationHistory: () => void;
+  removeEducationHistory: (index: number) => void; // Add this line
 
   skills: Skill[];
   handleSkillChange: (index: number, field: string, value: string) => void;
-  addSkill: () => void;
+  addSkill: (description: string) => void; // Update this line
+  removeSkill: (index: number) => void; // Add this line
 
   more: Skill[];
   handleMoreSectionChange: (
@@ -82,4 +84,6 @@ export interface Props {
 
   prevStep: () => void | null;
   nextStep: () => void | null;
+  removeWorkExperience: (index: number) => void;
+  removeMore: (index: number) => void;
 }
