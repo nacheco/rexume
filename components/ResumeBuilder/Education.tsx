@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Education = ({
   educationHistory,
@@ -6,21 +6,17 @@ const Education = ({
   handleEducationHistoryChange,
   addEducationHistory,
 }) => {
-    const [isCheckedArray, setIsCheckedArray] = useState(
-        educationHistory.map(() => false) 
-      );
-    
-    
-      const handleCheckboxChange = (index) => {
-        const updatedIsCheckedArray = [...isCheckedArray];
-        updatedIsCheckedArray[index] = !updatedIsCheckedArray[index];
-        setIsCheckedArray(updatedIsCheckedArray);
-        handleEducationHistoryChange(
-          index,
-          "endDate",
-          ""
-        )
-      };
+  const [isCheckedArray, setIsCheckedArray] = useState(
+    educationHistory.map(() => false)
+  );
+
+  const handleCheckboxChange = (index) => {
+    const updatedIsCheckedArray = [...isCheckedArray];
+    updatedIsCheckedArray[index] = !updatedIsCheckedArray[index];
+    setIsCheckedArray(updatedIsCheckedArray);
+    handleEducationHistoryChange(index, "enddate", "");
+  };
+  console.log(fields)
   return (
     <div>
       {/* Step 3: Education Fields */}
@@ -29,13 +25,13 @@ const Education = ({
         <div key={index} className="w-[40vw] p-4 my-4">
           <h2>Education {index + 1}</h2>
           <label>
-              <input
-                type="checkbox"
-                checked={isCheckedArray[index]}
-                onChange={() => handleCheckboxChange(index)}
-              />
-              I currently study here
-            </label>
+            <input
+              type="checkbox"
+              checked={isCheckedArray[index]}
+              onChange={() => handleCheckboxChange(index)}
+            />
+            I currently study here
+          </label>
           {fields.map((field) => (
             <div key={field.name} className="my-2">
               {/* Render input fields for all fields except "Description" */}
@@ -54,21 +50,20 @@ const Education = ({
                   }
                 />
               )}
-{field.name === "End Date" && !isCheckedArray[index] && (
-                  <input
-                    className="w-[100%]"
-               
-                    placeholder={field.placeholder}
-                    value={edu.endDate || ""}
-                    onChange={(e) =>
-                      handleEducationHistoryChange(
-                        index,
-                        "endDate",
-                        e.target.value
-                      )
-                    }
-                  />
-                )}
+              {field.name === "End Date" && !isCheckedArray[index] && (
+                <input
+                  className="w-[100%]"
+                  placeholder={field.placeholder}
+                  value={edu[field.name.toLowerCase().replace(" ", "")] || ""}
+                  onChange={(e) =>
+                    handleEducationHistoryChange(
+                      index,
+                      "enddate",
+                      e.target.value
+                    )
+                  }
+                />
+              )}
               {/* Textarea for "Description" field */}
               {field.name === "Description" && (
                 <textarea
@@ -89,7 +84,6 @@ const Education = ({
         </div>
       ))}
 
-  
       <button
         onClick={addEducationHistory}
         className="my-4 bg-black text-white px-4 py-2 rounded"

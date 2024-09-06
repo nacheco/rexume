@@ -30,9 +30,9 @@ const ResumeBuilder = () => {
     {
       school: "",
       degree: "",
-      fieldOfStudy: "",
-      startDate: "",
-      endDate: "",
+      fieldofstudy: "",
+      startdate: "",
+      enddate: "",
       description: "",
     },
   ]);
@@ -110,9 +110,9 @@ const ResumeBuilder = () => {
       ...workExperiences,
       {
         employer: "",
-        jobTitle: "",
-        startDate: "",
-        endDate: "",
+        jobtitle: "",
+        startdate: "",
+        enddate: "",
         description: "",
       },
     ]);
@@ -123,9 +123,9 @@ const ResumeBuilder = () => {
       {
         school: "",
         degree: "",
-        fieldOfStudy: "",
-        startDate: "",
-        endDate: "",
+        fieldofstudy: "",
+        startdate: "",
+        enddate: "",
         description: "",
       },
     ]);
@@ -282,6 +282,7 @@ const ResumeBuilder = () => {
             skills={skills}
             workExperiences={workExperiences}
             educationHistory={educationHistory}
+            more={more}
           />
           {steps.map(
             (stepInfo, index) =>

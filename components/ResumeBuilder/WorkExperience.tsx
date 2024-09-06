@@ -66,11 +66,13 @@ const WorkExperience = ({
                     className="w-[100%]"
 
                     placeholder={field.placeholder}
-                    value={experience.endDate || ""}
+                    value={
+                      experience[field.name.toLowerCase().replace(" ", "")] || ""
+                    }
                     onChange={(e) =>
                       handleWorkExperienceChange(
                         index,
-                        "endDate",
+                        "enddate",
                         e.target.value
                       )
                     }
