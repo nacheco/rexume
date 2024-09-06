@@ -82,4 +82,5 @@ export interface Props {
 
   prevStep: () => void | null;
   nextStep: () => void | null;
+  handlePrint:() => any
 }

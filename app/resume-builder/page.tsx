@@ -1,13 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect,useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import StepForm from "@/components/ResumeBuilder/StepForm";
 import { Props } from "@/types/props";
 import ResumeTemplate from "@/components/ResumeTemplate";
+import { useReactToPrint } from "react-to-print";
 
 const ResumeBuilder = () => {
   const [step, setStep] = useState(0);
+  const componentRef = useRef<HTMLDivElement>(null);
   const [aboutMe, setAboutMe] = useState({
     name: "",
     title: "",
@@ -274,11 +276,16 @@ const ResumeBuilder = () => {
     },
   ];
 
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
   return (
     <div className="mx-auto my-50 w-[90vw] flex justify-center min-h-[fit-content]">
       <AnimatePresence mode="wait">
         <>
           <ResumeTemplate
+          ref={componentRef}
             aboutMe={aboutMe}
             skills={skills}
             workExperiences={workExperiences}
@@ -308,6 +315,7 @@ const ResumeBuilder = () => {
                   addMore={addMore}
                   prevStep={index > 0 ? prevStep : null}
                   nextStep={index < steps.length - 1 ? nextStep : null}
+                  handlePrint={handlePrint}
                 />
               )
           )}

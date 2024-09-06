@@ -32,6 +32,7 @@ const StepForm: React.FC<Props> = ({
 
   prevStep,
   nextStep,
+  handlePrint
 }) => {
   const [isChecked, setIsChecked] = useState(false);
   const handleCheckboxChange = () => {
@@ -127,6 +128,7 @@ const StepForm: React.FC<Props> = ({
         {!nextStep && (
           <>
             <button
+            onClick={handlePrint}
               type="submit"
               className="bg-[#FB8C3E] text-white px-4 py-2 rounded"
             >
