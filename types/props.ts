@@ -46,20 +46,18 @@ export interface StepInfo {
 }
 
 export interface Props {
-  step: Step;
-  fields: Field[];
-
-  aboutMe: AboutMe;
-  handleAboutMeChange: (key: string, value: string) => void;
-
-  workExperiences: WorkExperience[];
+  step: number;
+  fields: any; // Replace 'any' with a more specific type if possible
+  aboutMe: any; // Replace 'any' with a more specific type
+  handleAboutMeChange: (field: string, value: string) => void;
+  workExperiences: any[]; // Replace 'any[]' with a more specific type
   addWorkExperience: () => void;
   handleWorkExperienceChange: (
     index: number,
     field: string,
     value: string
   ) => void;
-
+  removeWorkExperience: (index: number) => void;
   educationHistory: Education[];
   handleEducationHistoryChange: (
     index: number,
@@ -84,6 +82,4 @@ export interface Props {
 
   prevStep: () => void | null;
   nextStep: () => void | null;
-  removeWorkExperience: (index: number) => void;
-  removeMore: (index: number) => void;
 }
