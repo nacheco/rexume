@@ -3,7 +3,7 @@ export type Step = number; // Assuming step is a number, it could also be an enu
 export interface AboutMe {
   name: string;
   title: string;
-  phone: string;
+  phonenumber: string;
   email: string;
   location: string;
   linkedin: string;
@@ -22,7 +22,7 @@ export interface WorkExperience {
 export interface Education {
   school: string;
   degree: string;
-  fieldofstudy: string;
+  field: string;
   startdate: string;
   enddate: string;
   description: string;

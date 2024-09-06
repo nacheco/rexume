@@ -11,7 +11,7 @@ const ResumeBuilder = () => {
   const [aboutMe, setAboutMe] = useState({
     name: "",
     title: "",
-    phone: "",
+    phonenumber: "",
     email: "",
     location: "",
     linkedin: "",
@@ -30,23 +30,24 @@ const ResumeBuilder = () => {
     {
       school: "",
       degree: "",
-      fieldofstudy: "",
+      field: "",
       startdate: "",
       enddate: "",
       description: "",
     },
   ]);
-  const [more, setMore] = useState([{ sectionName: "", sectionDetails: "" }]);
+  const [more, setMore] = useState([{ sectionname: "", sectiondetails: "" }]);
   // Load data from localStorage
   useEffect(() => {
     const storedData = localStorage.getItem("resumeData");
+    console.log(storedData);
     if (storedData) {
       const parsedData = JSON.parse(storedData);
       setAboutMe(parsedData.aboutMe || {});
       setWorkExperiences(parsedData.workExperiences || []);
       setEducationHistory(parsedData.educationHistory || []);
       setSkills(parsedData.skills || []);
-      setMore(parsedData.skills || []);
+      setMore(parsedData.more || []);
     }
   }, []);
 
@@ -123,7 +124,7 @@ const ResumeBuilder = () => {
       {
         school: "",
         degree: "",
-        fieldofstudy: "",
+        field: "",
         startdate: "",
         enddate: "",
         description: "",
@@ -134,7 +135,7 @@ const ResumeBuilder = () => {
     setSkills([...skills, { description: "" }]);
   };
   const addMore = () => {
-    setMore([...more, { sectionName: "", sectionDetails: "" }]);
+    setMore([...more, { sectionname: "", sectiondetails: "" }]);
   };
 
   const nextStep = () => setStep((prev) => prev + 1);
@@ -206,7 +207,7 @@ const ResumeBuilder = () => {
           name: "Description",
           type: "text",
           placeholder:
-            "Describe your work experience, separating bullet points by period",
+            "Describe your work experience, separating bullet points by &&",
         },
       ],
     },
@@ -224,7 +225,7 @@ const ResumeBuilder = () => {
           placeholder: "Enter your Degree",
         },
         {
-          name: "Field of Study",
+          name: "Field",
           type: "text",
           placeholder: "Enter your field of study",
         },
@@ -242,7 +243,7 @@ const ResumeBuilder = () => {
           name: "Description",
           type: "text",
           placeholder:
-            "Describe your educational experience, separating bullet points by period",
+            "Describe your educational experience, separating bullet points by &&",
         },
       ],
     },
@@ -260,12 +261,12 @@ const ResumeBuilder = () => {
       step: 5,
       fields: [
         {
-          name: "sectionName",
+          name: "sectionname",
           type: "text",
           placeholder: "For example, Awards",
         },
         {
-          name: "sectionDetails",
+          name: "sectiondetails",
           type: "text",
           placeholder: "For example, I won abc awards during an event",
         },
