@@ -6,7 +6,7 @@ const WorkExperience = ({
   handleWorkExperienceChange,
   addWorkExperience
 }) => {
- 
+ console.log(workExperiences)
   const [isCheckedArray, setIsCheckedArray] = useState(
     workExperiences.map(() => false) 
   );

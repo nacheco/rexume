@@ -67,7 +67,8 @@ const ResumeTemplate = forwardRef<HTMLDivElement, ResumeProps>((props, ref) => {
       {/* Work Experience Section */}
       <section className="mb-6">
         <h2 className="text-2xl font-bold text-blue-600">WORK EXPERIENCE</h2>
-        {workExperiences.map((work, index) => (
+       
+       {workExperiences.map((work, index) => (
           <div key={index} className="mb-4">
             <h3 className="text-xl font-bold">{work.jobtitle}</h3>
             <div className="text-gray-600 flex justify-between ">

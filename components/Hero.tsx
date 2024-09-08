@@ -5,8 +5,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { FaAsterisk } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 const Hero: React.FC = () => {
+  const route=useRouter()
   return (
     <motion.main
       initial={{ opacity: 0 }}
@@ -60,8 +62,16 @@ const Hero: React.FC = () => {
             </Link>
 
             <div className="flex items-center text-center space-x-2">
-              <FaAsterisk className="text-xs text-secondary" />
-              <p className="text-sm">Coming Soon!</p>
+              {/* <FaAsterisk className="text-xs text-secondary" /> */}
+              {/* <p className="text-sm">Coming Soon!</p> */}
+              <Button
+                className="py-2 sm:py-3 px-4 sm:px-6 rounded text-sm sm:text-base w-full sm:w-auto bg-[#FB8C3E] hover:bg-[#fc9c58] text-black"
+                onClick={() =>
+                  route.push("/resume-builder")
+                }
+              >
+                Try Rexume
+              </Button>
             </div>
           </motion.div>
 
