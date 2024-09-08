@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
+import { WorkExperience as WorkExperienceType, Field } from '@/types/props';
 
-const WorkExperience = ({
+interface WorkExperienceProps {
+  workExperiences: WorkExperienceType[];
+  fields: Field[];
+  handleWorkExperienceChange: (index: number, field: string, value: string) => void;
+  addWorkExperience: () => void;
+}
+
+const WorkExperience: React.FC<WorkExperienceProps> = ({
   workExperiences,
   fields,
   handleWorkExperienceChange,
@@ -12,7 +20,7 @@ const WorkExperience = ({
   );
 
 
-  const handleCheckboxChange = (index) => {
+  const handleCheckboxChange = (index: number) => {
     const updatedIsCheckedArray = [...isCheckedArray];
     updatedIsCheckedArray[index] = !updatedIsCheckedArray[index];
     setIsCheckedArray(updatedIsCheckedArray);
@@ -48,7 +56,7 @@ const WorkExperience = ({
                     type={field.type}
                     placeholder={field.placeholder}
                     value={
-                      experience[field.name.toLowerCase().replace(" ", "")] || ""
+                      (experience as any)[field.name.toLowerCase().replace(" ", "")] || ""
                     }
                     onChange={(e) =>
                       handleWorkExperienceChange(
@@ -64,10 +72,9 @@ const WorkExperience = ({
                 {field.name === "End Date" && !isCheckedArray[index] && (
                   <input
                     className="w-[100%]"
-
                     placeholder={field.placeholder}
                     value={
-                      experience[field.name.toLowerCase().replace(" ", "")] || ""
+                      (experience as any)[field.name.toLowerCase().replace(" ", "")] || ""
                     }
                     onChange={(e) =>
                       handleWorkExperienceChange(
@@ -85,7 +92,7 @@ const WorkExperience = ({
                     className="w-[100%]"
                     placeholder={field.placeholder}
                     value={
-                      experience[field.name.toLowerCase().replace(" ", "")] || ""
+                      (experience as any)[field.name.toLowerCase().replace(" ", "")] || ""
                     }
                     onChange={(e) =>
                       handleWorkExperienceChange(

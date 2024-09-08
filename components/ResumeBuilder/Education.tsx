@@ -1,25 +1,42 @@
 import React, { useState } from "react";
 
-const Education = ({
+interface EducationProps {
+  educationHistory: Array<{
+    school: string;
+    degree: string;
+    field: string;
+    startdate: string;
+    enddate: string;
+    description: string;
+  }>;
+  fields: Array<{
+    name: string;
+    type: string;
+    placeholder: string;
+  }>;
+  handleEducationHistoryChange: (index: number, field: string, value: string) => void;
+  addEducationHistory: () => void;
+}
+
+const Education: React.FC<EducationProps> = ({
   educationHistory,
   fields,
   handleEducationHistoryChange,
   addEducationHistory,
 }) => {
-  const [isCheckedArray, setIsCheckedArray] = useState(
+  const [isCheckedArray, setIsCheckedArray] = useState<boolean[]>(
     educationHistory.map(() => false)
   );
 
-  const handleCheckboxChange = (index) => {
+  const handleCheckboxChange = (index: number) => {
     const updatedIsCheckedArray = [...isCheckedArray];
     updatedIsCheckedArray[index] = !updatedIsCheckedArray[index];
     setIsCheckedArray(updatedIsCheckedArray);
     handleEducationHistoryChange(index, "enddate", "");
   };
-  console.log(fields)
+
   return (
     <div>
-      {/* Step 3: Education Fields */}
       <h1 className="text-2xl">Education</h1>
       {educationHistory.map((edu, index) => (
         <div key={index} className="w-[40vw] p-4 my-4">
@@ -34,13 +51,12 @@ const Education = ({
           </label>
           {fields.map((field) => (
             <div key={field.name} className="my-2">
-              {/* Render input fields for all fields except "Description" */}
               {field.name !== "Description" && field.name !== "End Date" && (
                 <input
                   className="w-[100%]"
                   type={field.type}
                   placeholder={field.placeholder}
-                  value={edu[field.name.toLowerCase().replace(" ", "")] || ""}
+                  value={edu[field.name.toLowerCase().replace(" ", "") as keyof typeof edu] || ""}
                   onChange={(e) =>
                     handleEducationHistoryChange(
                       index,
@@ -54,7 +70,7 @@ const Education = ({
                 <input
                   className="w-[100%]"
                   placeholder={field.placeholder}
-                  value={edu[field.name.toLowerCase().replace(" ", "")] || ""}
+                  value={edu[field.name.toLowerCase().replace(" ", "") as keyof typeof edu] || ""}
                   onChange={(e) =>
                     handleEducationHistoryChange(
                       index,
@@ -64,12 +80,11 @@ const Education = ({
                   }
                 />
               )}
-              {/* Textarea for "Description" field */}
               {field.name === "Description" && (
                 <textarea
                   className="w-[100%]"
                   placeholder={field.placeholder}
-                  value={edu[field.name.toLowerCase().replace(" ", "")] || ""}
+                  value={edu[field.name.toLowerCase().replace(" ", "") as keyof typeof edu] || ""}
                   onChange={(e) =>
                     handleEducationHistoryChange(
                       index,

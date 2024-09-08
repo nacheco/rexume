@@ -1,5 +1,4 @@
 "use client";
-import { Props } from "@/types/props";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import WorkExperience from "./WorkExperience";
@@ -7,29 +6,51 @@ import Education from "./Education";
 import Skill from "./Skill";
 import CustomizedSection from "./CustomizedSection";
 
+// Ensure AboutMe is defined correctly
+interface AboutMe {
+  [key: string]: string;
+}
+
+// Update the Props interface
+interface Props {
+  step: number;
+  fields: Array<{ name: string; type: string; placeholder: string }>;
+  aboutMe: AboutMe;
+  handleAboutMeChange: (key: string, value: string) => void;
+  workExperiences: Array<any>;
+  addWorkExperience: () => void;
+  handleWorkExperienceChange: (index: number, field: string, value: string) => void;
+  educationHistory: Array<any>;
+  handleEducationHistoryChange: (index: number, field: string, value: string) => void;
+  addEducationHistory: () => void;
+  skills: Array<{ description: string }>;
+  handleSkillChange: (index: number, field: string, value: string) => void;
+  addSkill: () => void;
+  more: Array<{ sectionname: string; sectiondetails: string }>;
+  handleMoreSectionChange: (index: number, field: string, value: string) => void;
+  addMore: () => void;
+  prevStep: (() => void) | null;
+  nextStep: (() => void) | null;
+  handlePrint: () => void;
+}
+
 const StepForm: React.FC<Props> = ({
   step,
   fields,
-
   aboutMe,
   handleAboutMeChange,
-
   workExperiences,
   addWorkExperience,
   handleWorkExperienceChange,
-
   educationHistory,
   handleEducationHistoryChange,
   addEducationHistory,
-
   skills,
   handleSkillChange,
   addSkill,
-
   more,
   handleMoreSectionChange,
   addMore,
-
   prevStep,
   nextStep,
   handlePrint

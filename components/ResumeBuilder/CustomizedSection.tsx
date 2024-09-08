@@ -1,6 +1,11 @@
-import React from 'react';
+interface CustomizedSectionProps {
+  more: Array<{ sectionname: string; sectiondetails: string }>;
+  fields: Array<{ name: string; type: string; placeholder: string }>;
+  handleMoreSectionChange: (index: number, field: string, value: string) => void;
+  addMore: () => void;
+}
 
-const CustomizedSection = ({ more, fields, handleMoreSectionChange, addMore }) => {
+const CustomizedSection: React.FC<CustomizedSectionProps> = ({ more, fields, handleMoreSectionChange, addMore }) => {
   return (
     <div>
       {/* Step 5: Customized Section Fields */}
@@ -15,7 +20,7 @@ const CustomizedSection = ({ more, fields, handleMoreSectionChange, addMore }) =
                   className="w-[100%]"
                   type={field.type}
                   placeholder={field.placeholder}
-                  value={section[field.name.toLowerCase().replace(" ", "")] || ""}
+                  value={section[field.name.toLowerCase().replace(" ", "") as keyof typeof section] || ""}
                   onChange={(e) =>
                     handleMoreSectionChange(
                       index,

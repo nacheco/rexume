@@ -31,11 +31,7 @@ interface ResumeProps {
     other: string;
   };
   workExperiences: WorkExperience[];
-  skills: [
-    {
-      description: string;
-    }
-  ];
+  skills: { description: string }[];
   educationHistory: Education[];
   more: [
     {

@@ -38,7 +38,7 @@ const ResumeBuilder = () => {
       description: "",
     },
   ]);
-  const [more, setMore] = useState([{ sectionname: "", sectiondetails: "" }]);
+  const [more, setMore] = useState<{ sectionname: string; sectiondetails: string; }[]>([]);
   // Load data from localStorage
   useEffect(() => {
     const storedData = localStorage.getItem("resumeData");
@@ -285,12 +285,12 @@ const ResumeBuilder = () => {
       <AnimatePresence mode="wait">
         <>
           <ResumeTemplate
-          ref={componentRef}
+            ref={componentRef}
             aboutMe={aboutMe}
             skills={skills}
             workExperiences={workExperiences}
             educationHistory={educationHistory}
-            more={more}
+            more={more as any}
           />
           {steps.map(
             (stepInfo, index) =>

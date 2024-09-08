@@ -1,6 +1,13 @@
 import React from 'react';
 
-const Skill = ({ skills, fields, handleSkillChange, addSkill }) => {
+interface SkillProps {
+  skills: Array<{ description: string }>;
+  fields: Array<{ name: string; type: string; placeholder: string }>;
+  handleSkillChange: (index: number, field: string, value: string) => void;
+  addSkill: () => void;
+}
+
+const Skill: React.FC<SkillProps> = ({ skills, fields, handleSkillChange, addSkill }) => {
   return (
     <div>
       {/* Step 4: Skills Fields */}
@@ -15,7 +22,7 @@ const Skill = ({ skills, fields, handleSkillChange, addSkill }) => {
                   className="w-[100%]"
                   type={field.type}
                   placeholder={field.placeholder}
-                  value={skill[field.name.toLowerCase().replace(" ", "")] || ""}
+                  value={skill[field.name.toLowerCase().replace(" ", "") as keyof typeof skill] || ""}
                   onChange={(e) =>
                     handleSkillChange(
                       index,
