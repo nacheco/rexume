@@ -5,8 +5,10 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { FaAsterisk } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 const Hero: React.FC = () => {
+  const route=useRouter()
   return (
     <motion.main
       initial={{ opacity: 0 }}
@@ -36,7 +38,8 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.4, duration: 0.5 }}
             className="text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-8 font-light tracking-tight"
           >
-            Personalized, Powerful, and Ready to Impress – Tailored to Your Needs in Minutes.
+            Personalized, Powerful, and Ready to Impress – Tailored to Your
+            Needs in Minutes.
           </motion.p>
 
           <motion.div
@@ -46,17 +49,29 @@ const Hero: React.FC = () => {
             className="font-poppins mb-6 sm:mb-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4"
           >
             <Link href="#footer">
-              <Button 
-                className="py-2 sm:py-3 px-4 sm:px-6 rounded text-sm sm:text-base w-full sm:w-auto" 
-                onClick={() => document.getElementById('footer')?.scrollIntoView({ behavior: 'smooth' })}
+              <Button
+                className="py-2 sm:py-3 px-4 sm:px-6 rounded text-sm sm:text-base w-full sm:w-auto"
+                onClick={() =>
+                  document
+                    .getElementById("footer")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
               >
                 Join Waitlist
               </Button>
             </Link>
-            
+
             <div className="flex items-center text-center space-x-2">
-              <FaAsterisk className="text-xs text-secondary" />
-              <p className="text-sm">Coming Soon!</p>
+              {/* <FaAsterisk className="text-xs text-secondary" /> */}
+              {/* <p className="text-sm">Coming Soon!</p> */}
+              <Button
+                className="py-2 sm:py-3 px-4 sm:px-6 rounded text-sm sm:text-base w-full sm:w-auto bg-[#FB8C3E] hover:bg-[#fc9c58] text-black"
+                onClick={() =>
+                  route.push("/resume-builder")
+                }
+              >
+                Try Rexume
+              </Button>
             </div>
           </motion.div>
 
@@ -66,7 +81,8 @@ const Hero: React.FC = () => {
             transition={{ delay: 0.8, duration: 0.5 }}
             className="text-xs sm:text-sm md:text-base text-dark"
           >
-            Create ATS-optimized resumes instantly with our AI-driven builder. No account, no fees, just results.
+            Create ATS-optimized resumes instantly with our AI-driven builder.
+            No account, no fees, just results.
           </motion.p>
         </motion.div>
 
@@ -82,7 +98,6 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
-          
           />
           <motion.div
             initial={{ opacity: 0, y: 20 }}

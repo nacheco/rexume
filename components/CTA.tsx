@@ -1,17 +1,29 @@
 import React from 'react';
 import { FaLock, FaShieldAlt, FaUserSecret } from 'react-icons/fa';
 import Link from 'next/link';
+import { Button } from './ui/button';
+import { useRouter } from "next/navigation";
+
 
 const CTA: React.FC = () => {
+  const route=useRouter()
   return (
     <div className="bg-dark text-main p-4 sm:p-6 md:p-8 rounded-3xl">
       <h2 className="font-gilda text-3xl sm:text-4xl md:text-5xl text-center mb-4">Create Your Perfect Resume Now - It&apos;s Free!</h2>
       <p className="text-center text-sm sm:text-base mb-6 sm:mb-8">No sign-up, no credit card, no strings attached. Get your professional resume in just 5 minutes!</p>
       
       <div className="flex justify-center mb-6 sm:mb-8">
-        <button disabled className="bg-dark py-2 sm:py-3 px-4 sm:px-6 rounded-xl text-xs sm:text-sm transition duration-300 border opacity-50 cursor-not-allowed">
+        {/* <button disabled className="bg-dark py-2 sm:py-3 px-4 sm:px-6 rounded-xl text-xs sm:text-sm transition duration-300 border opacity-50 cursor-not-allowed">
           Coming Soon!
-        </button>
+        </button> */}
+        <Button
+                className="py-2 sm:py-3 px-4 sm:px-6 rounded text-sm sm:text-base w-full sm:w-auto bg-[#FB8C3E] hover:bg-[#fc9c58] text-black"
+                onClick={() =>
+                  route.push("/resume-builder")
+                }
+              >
+                Try Rexume
+              </Button>
       </div>
       
       <div className="grid grid-cols-1  lg:grid-cols-3 gap-4 sm:gap-6">
